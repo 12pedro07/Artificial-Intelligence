@@ -32,7 +32,7 @@ ga = GeneticAlgorithm(boxes,
                       maximise_fitness=True,
                       parent_selection_function="tournament",
                       create_individual_callback=create_individual,
-                      show_best=False)
+                      show_best=True)
 
 # rodando o algoritmo
 ga.run_evolution()
