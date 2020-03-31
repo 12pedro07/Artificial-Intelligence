@@ -1,5 +1,6 @@
 from ga_class import GeneticAlgorithm
 import random
+import time
 
 def fitness_func(selected_individuals, data):
     weight = value = 0
@@ -26,16 +27,20 @@ boxes=[ {'name': 'green',   'value': 4,  'weight': 12},
 ga = GeneticAlgorithm(boxes,
                       fitness_func,
                       population_size=70,
-                      generations=500,
+                      generations=200,
                       mutation_rate=0.3,
                       elitism=True,
                       maximise_fitness=True,
                       parent_selection_function="tournament",
                       create_individual_callback=create_individual,
-                      show_best=True)
+                      show_best=False)
 
+start = time.time()
 # rodando o algoritmo
 ga.run_evolution()
+end = time.time()
+
+print("runs in {} s".format(end-start))
 
 # mostrando o resultado
 best = ga.best

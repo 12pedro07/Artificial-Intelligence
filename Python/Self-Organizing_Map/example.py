@@ -17,7 +17,7 @@ learning_rate = 1
 
 sigma_decrease_rate = 0
 
-som = SOM(inputs, weights, sigma=sigma, learning_rate=learning_rate, sigma_decrease_rate=sigma_decrease_rate)
+som = SOM(inputs, weights, sigma=sigma, learning_rate=learning_rate, sigma_decrease_rate=sigma_decrease_rate, epochs=10)
 som.train(ignore_hk=True, display=True)
 points = [[1,4],
           [6,2],

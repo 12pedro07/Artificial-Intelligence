@@ -3,12 +3,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class SOM():
-    def __init__(self, inputs, weights, sigma=1, learning_rate=1, sigma_decrease_rate=0):
+    def __init__(self, inputs, weights, sigma=1, learning_rate=1, sigma_decrease_rate=0, epochs=1):
         self.inputs = np.array(inputs) # all the inputs for the network
         self.w = np.array(weights) # weight matrix ( also defines the number of neurons )
         self.sigma = sigma # neighbor kernel size for hk
         self.eta = learning_rate
         self.sigma_decrease_rate = sigma_decrease_rate
+        self.epochs = epochs
         print("\n")
         print("<>"*25)
         print("INSTANTIATING A SELF-ORGANIZING MAP!")
@@ -62,16 +63,17 @@ class SOM():
 
     def train(self, ignore_hk=False, display=False):
         np.set_printoptions(precision = 2, suppress=True)
-        for iteration, x in enumerate(self.inputs):
-            delta_w = self.delta_w(self.find_k(x),x, ignore_hk)
-            if display:
-                print("="*50)
-                print("ITERATION <{}>".format(iteration+1))
-                print("w = \n{}\n".format(self.w))
-                print("input = \n{}\n".format(x))
-                print("delta w = \n{}\n".format(delta_w))
-                print("new w = \n{}\n".format(delta_w + self.w))
-            self.w = delta_w + self.w
+        for _ in range(self.epochs):
+            for iteration, x in enumerate(self.inputs):
+                delta_w = self.delta_w(self.find_k(x),x, ignore_hk)
+                if display:
+                    print("="*50)
+                    print("ITERATION <{}>".format(iteration+1))
+                    print("w = \n{}\n".format(self.w))
+                    print("input = \n{}\n".format(x))
+                    print("delta w = \n{}\n".format(delta_w))
+                    print("new w = \n{}\n".format(delta_w + self.w))
+                self.w = delta_w + self.w
 
     def linear2matrix(self,linear,matrix):
         row = int(linear/len(matrix))
