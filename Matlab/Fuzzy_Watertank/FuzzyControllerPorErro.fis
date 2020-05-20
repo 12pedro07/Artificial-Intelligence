@@ -1,0 +1,33 @@
+[System]
+Name='FuzzyControllerPorErro'
+Type='mamdani'
+Version=2.0
+NumInputs=1
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Erro'
+Range=[-2 2]
+NumMFs=3
+MF1='Baixo':'zmf',[-0.2 0]
+MF2='Ideal':'trimf',[-0.1 0 0.1]
+MF3='Alto':'smf',[0 0.2]
+
+[Output1]
+Name='Abertura'
+Range=[-0.03 0.03]
+NumMFs=3
+MF1='Fechar':'zmf',[-0.02 -0.001]
+MF2='Manter_Constante':'trimf',[-0.0009999 0 0.0009999]
+MF3='Abrir':'smf',[0.001 0.02]
+
+[Rules]
+1, 3 (1) : 1
+2, 2 (1) : 1
+3, 1 (1) : 1
