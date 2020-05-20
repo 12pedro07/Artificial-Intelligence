@@ -1,0 +1,33 @@
+[System]
+Name='Motor_Fuzzy'
+Type='mamdani'
+Version=2.0
+NumInputs=1
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Rot_RPM'
+Range=[0 14544]
+NumMFs=3
+MF1='MuitoLento':'trapmf',[0 0 7260 7272]
+MF2='VelCorreta':'trimf',[7100 7272 7300]
+MF3='MuitoRapido':'trapmf',[7272 7275 14900 15000]
+
+[Output1]
+Name='Tensao_V'
+Range=[0 12]
+NumMFs=3
+MF1='MenosTensao':'trimf',[-947 0 5]
+MF2='SemAlteracao':'trimf',[4.8 5 5.2]
+MF3='MaisTensao':'trapmf',[5 5.1 14.2 14.5]
+
+[Rules]
+1, 3 (1) : 1
+2, 2 (1) : 1
+3, 1 (1) : 1

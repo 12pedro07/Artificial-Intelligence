@@ -1,0 +1,79 @@
+[System]
+Name='FuzzyController'
+Type='mamdani'
+Version=2.0
+NumInputs=4
+NumOutputs=1
+NumRules=16
+AndMethod='prod'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='sum'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Erro'
+Range=[-18 18]
+NumMFs=2
+MF1='N':'trapmf',[-100 -100 -6 6]
+MF2='P':'trapmf',[-6 6 100 100]
+
+[Input2]
+Name='Vel_Carro'
+Range=[-7 7]
+NumMFs=2
+MF1='N':'trapmf',[-100 -100 -1 1]
+MF2='P':'trapmf',[-1 1 100 100]
+
+[Input3]
+Name='Angulo'
+Range=[-0.6 0.6]
+NumMFs=2
+MF1='N':'trapmf',[-100 -100 -0.12 0.12]
+MF2='P':'trapmf',[-0.12 0.12 100 100]
+
+[Input4]
+Name='Vel_Angular'
+Range=[-4.5 4.5]
+NumMFs=2
+MF1='N':'trapmf',[-100 -100 -0.45 0.45]
+MF2='P':'trapmf',[-0.4 0.4 100 100]
+
+[Output1]
+Name='Força'
+Range=[-10 10]
+NumMFs=16
+MF1='n1':'trapmf',[-8 -8 -7 -7]
+MF2='n2':'trapmf',[-7 -7 -6 -6]
+MF3='n3':'trapmf',[-6 -6 -5 -5]
+MF4='n4':'trapmf',[-5 -5 -4 -4]
+MF5='n5':'trapmf',[-4 -4 -3 -3]
+MF6='n6':'trapmf',[-3 -3 -2 -2]
+MF7='n7':'trapmf',[-2 -2 -1 -1]
+MF8='n8':'trapmf',[-1 -1 0 0]
+MF9='p9':'trapmf',[0 0 1 1]
+MF10='p10':'trapmf',[1 1 2 2]
+MF11='p11':'trapmf',[2 2 3 3]
+MF12='p12':'trapmf',[3 3 4 4]
+MF13='p13':'trapmf',[4 4 5 5]
+MF14='p14':'trapmf',[5 5 6 6]
+MF15='p15':'trapmf',[6 6 7 7]
+MF16='p16':'trapmf',[7 7 8 8]
+
+[Rules]
+1 1 1 1, 1 (1) : 1
+1 2 1 1, 2 (1) : 1
+2 1 1 1, 3 (1) : 1
+2 2 1 1, 4 (1) : 1
+1 1 1 2, 5 (1) : 1
+1 2 1 2, 6 (1) : 1
+2 1 1 2, 7 (1) : 1
+2 2 1 2, 8 (1) : 1
+1 1 2 1, 9 (1) : 1
+1 2 2 1, 10 (1) : 1
+2 1 2 1, 11 (1) : 1
+2 2 2 1, 12 (1) : 1
+1 1 2 2, 13 (1) : 1
+1 2 2 2, 14 (1) : 1
+2 1 2 2, 15 (1) : 1
+2 2 2 2, 16 (1) : 1
